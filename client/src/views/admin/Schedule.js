@@ -131,7 +131,7 @@ function Schedules() {
             <Card>
               <CardBody>
 
-                <Table>
+                <Table responsive>
                   <thead>
                     <tr>
                       <th>Start Date</th>
@@ -241,7 +241,7 @@ function Schedules() {
               <Col col={12}>
                 <Card className="card-user">
                   <CardBody>
-                    <Table>
+                    <Table responsive>
                       <thead>
                         <tr>
                           <th>Days</th>

@@ -131,7 +131,7 @@ function CareGivers() {
             <Card>
               <CardBody>
 
-                <Table>
+                <Table responsive>
                   <thead>
                     <tr>
                       <th>Name</th>

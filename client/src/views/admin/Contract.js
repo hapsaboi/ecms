@@ -147,7 +147,7 @@ function Contracts() {
             <Card>
               <CardBody>
 
-                <Table>
+                <Table responsive>
                   <thead>
                     <tr>
                       <th>Name</th>
@@ -302,7 +302,7 @@ function Contracts() {
                 <Card className="card-user">
                   <div style={{ textAlign: "center" }}>
                     <h4 style={{ marginTop: "10px" }}>All Contracts</h4>
-                    <Table>
+                    <Table responsive>
                       <thead>
                         <tr>
                           <th>Start/End Date</th>

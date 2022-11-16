@@ -132,7 +132,7 @@ function Clients() {
             <Card>
               <CardBody>
 
-                <Table>
+                <Table responsive>
                   <thead>
                     <tr>
                       <th>Name</th>

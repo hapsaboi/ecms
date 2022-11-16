@@ -147,7 +147,7 @@ function Invoices() {
             <Card>
               <CardBody>
 
-                <Table>
+                <Table responsive>
                   <thead>
                     <tr>
                       <th>Email</th>
@@ -292,7 +292,7 @@ function Invoices() {
                   </Row>
 
                   <CardBody>
-                    <Table>
+                    <Table responsive>
                       <thead>
                         <tr>
                           <th>Email</th>
