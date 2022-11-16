@@ -8,12 +8,12 @@ const crypto = require('crypto');
 // Users Model
 const User = require('../../models/User');
 // getting the auth middleware
-const {auth} = require('../../middleware/auth');
+const { auth } = require('../../middleware/auth');
 
 
 let FrontEnd = "";
 const port = process.env.PORT || process.env.LocalPort;
-{process.env.LocalPort === port ? FrontEnd = process.env.FrontEndHost : FrontEnd = process.env.FrontEndHostProduction}
+{ process.env.LocalPort === port ? FrontEnd = process.env.FrontEndHost : FrontEnd = process.env.FrontEndHostProduction }
 
 //@routes POST api/auth
 //@desc Authenticate user
@@ -69,7 +69,7 @@ router.post('/', async (req, res) => {
 //@access Private
 router.get('/user', auth, (req, res) => {
     User.findById(req.user.id)
-        .select('name phone email address type date')
+        .select('phone email address type date first_name last_name role')
         .then(user => res.json(user))
 });
 

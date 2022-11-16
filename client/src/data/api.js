@@ -1,11 +1,54 @@
-export const BackEnd = process.env.REACT_APP_BackEndHost;
-export const business = {
-	name: "Dots Island & Godiyas Kitchen",
-	date: "27th November, 2022",
-	title: 'MEATILICIOUS',
-	time: "12 Noon",
-	venue: "Tobix Garden Ahamdu Bello way opp. Alibert furniture.",
-}
+const BackEnd = process.env.REACT_APP_BackEndHostLocal;
+export const caregiver = {
+	//take in a body with data
+	//data :  
+	addCareGiver: `${BackEnd}/api/caregiver/add_caregiver`,
+	updateCareGiver: `${BackEnd}/api/caregiver/update_caregiver`,
+	//---------------------------------------------------------------------------------------------------
+
+	showCareGiver: `${BackEnd}/api/caregiver/show_caregivers`,
+	//---------------------------------------------------------------------------------------------------
+
+	showAllCareGivers: `${BackEnd}/api/caregiver/show_all_caregivers`,
+	//---------------------------------------------------------------------------------------------------
+
+};
+export const schedule = {
+	//take in a body with data
+	//data :  
+	addSchedule: `${BackEnd}/api/schedule/add_schedule`,
+	updateSchedule: `${BackEnd}/api/schedule/update_schedule`,
+	//---------------------------------------------------------------------------------------------------
+
+	showSchedule: `${BackEnd}/api/schedule/show_schedule`,
+	//---------------------------------------------------------------------------------------------------
+
+	showAllSchedules: `${BackEnd}/api/schedule/show_all_schedules`,
+	//---------------------------------------------------------------------------------------------------
+
+};
+
+export const invoice_api = {
+	//take in a body with data
+	//data :  
+	addInvoice: `${BackEnd}/api/invoice/add_invoice`,
+	updateInvoice: `${BackEnd}/api/invoice/update_invoice`,
+	//---------------------------------------------------------------------------------------------------
+
+	showInvoices: `${BackEnd}/api/invoice/show_invoices`,
+	showInvoice: `${BackEnd}/api/invoice/show_invoice`,
+	//---------------------------------------------------------------------------------------------------
+};
+
+
+export const user = {
+	addUser: `${BackEnd}/api/user/add_user`,
+	updateUser: `${BackEnd}/api/user/update_user`,
+	getCounts: `${BackEnd}/api/user/get_counts`,
+	showUsers: `${BackEnd}/api/user/show_users`,
+	showAllUsers: `${BackEnd}/api/user/show_all_users`,
+	showUserByEmail: `${BackEnd}/api/user/show_user_by_email`
+};
 export const authenticate = {
 	//takes in token as http cookie
 	//data : [verifyToken]
@@ -34,21 +77,4 @@ export const authenticate = {
 
 	//---------
 	userAuth: `${BackEnd}/api/auth`
-};
-
-
-export const ticket = {
-
-	createTicket: `${BackEnd}/api/ticket/create_ticket`,
-	//---------------------------------------------------------------------------------------------------	
-	updateTicketStatus: `${BackEnd}/api/ticket/update_status`,
-	//---------------------------------------------------------------------------------------------------	
-	showTickets: `${BackEnd}/api/ticket/show_tickets`,
-	//---------------------------------------------------------------------------------------------------	
-	showUserTickets: `${BackEnd}/api/ticket/show_user_ticket`,
-	//---------------------------------------------------------------------------------------------------	
-	showStats: `${BackEnd}/api/ticket/show_stats`,
-	//---------------------------------------------------------------------------------------------------	
-	showValue: `${BackEnd}/api/ticket/show_value`,
-	//---------------------------------------------------------------------------------------------------	
 };

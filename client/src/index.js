@@ -4,11 +4,10 @@ import App from "./App";
 import AuthContext from './contexts/AuthContext';
 import Modal from "react-modal";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./views/admin/assets/css/animate.min.css";
-import "./views/admin/assets/scss/light-bootstrap-dashboard-react.scss?v=2.0.0";
-import "./views/admin/assets/css/demo.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
+import "bootstrap/dist/css/bootstrap.css";
+import "assets/scss/paper-dashboard.scss?v=1.3.0";
+import "assets/demo/demo.css";
+import "perfect-scrollbar/css/perfect-scrollbar.css";
 
 Modal.setAppElement("#root");
 

@@ -6,7 +6,7 @@ import { SectionHeading, Subheading as SubheadingBase } from "components/misc/He
 import StatsIllustrationSrc from "images/stats-illustration.svg";
 import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
 
-import event3 from '../images/confirmed/1.jpeg';
+import event3 from '../images/nurse.png';
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24`;
@@ -37,19 +37,12 @@ const DecoratorBlob = styled(SvgDotPattern)(props => [
 
 export default ({
   subheading = "Our Track Record",
-  settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  },
   heading = (
     <>
       We have been doing this <wbr /> since <span tw="text-primary-500">1999.</span>
     </>
   ),
-  description = "Meatilicious. We are ready to give you the greatest experience.",
+  description = "ECMS. We are ready to give you the greatest experience.",
   imageSrc = StatsIllustrationSrc,
   imageCss = null,
   imageContainerCss = null,
@@ -57,7 +50,6 @@ export default ({
   imageDecoratorBlobCss = null,
   imageInsideDiv = true,
   statistics = null,
-  textOnLeft = false
 }) => {
 
   return (
@@ -67,7 +59,7 @@ export default ({
           <img src={event3} css={imageCss} alt="" />
           {imageDecoratorBlob && <DecoratorBlob css={imageDecoratorBlobCss} />}
         </ImageColumn>
-        <TextColumn textOnLeft={textOnLeft}>
+        <TextColumn>
           <TextContent>
             {subheading && <Subheading>{subheading}</Subheading>}
             <Heading>{heading}</Heading>

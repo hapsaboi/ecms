@@ -94,3 +94,14 @@ Content-Type: application/json
   "name":"Hanis Hapsa",
   "email":"hapsahanis.hh@gmail.com"
 }
+
+
+###
+POST http://localhost:5000/api/schedule/create_schedule
+Content-Type: application/json
+Authorization: {{Token}}
+
+{
+  "month": "11",
+  "year":"2022"
+}
