@@ -30,23 +30,31 @@ const NextOfKinSchema = new Schema(
         address: {
             type: String,
             required: [true, 'Next of kins address is required!']
-        }
+        },
+        relationship: {
+            type: String,
+            required: [true, 'Next of kins role is required!']
+        },
     }
 );
 const EmergencyContactSchema = new Schema(
     {
         name: {
             type: String,
-            required: [true, 'Next of kins name is required!']
+            required: [true, 'Emergency Contact name is required!']
         },
         phone: {
             type: String,
-            required: [true, 'Next of kins phone number is required!']
+            required: [true, 'Emergency Contact phone number is required!']
         },
         address: {
             type: String,
-            required: [true, 'Next of kins address is required!']
-        }
+            required: [true, 'Emergency Contact address is required!']
+        },
+        relationship: {
+            type: String,
+            required: [true, 'Emergency Contact role is required!']
+        },
     }
 );
 

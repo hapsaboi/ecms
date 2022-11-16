@@ -260,68 +260,112 @@ function Clients() {
                   <hr></hr>
                   <h6> Next of Kin</h6>
                   <Row>
-                    <Col className="pr-1" md="4">
+                    <Col className="pr-1" md="3">
                       <FormGroup>
                         <label>Name</label>
                         <Input
+                          defaultValue={current?.NextOfKin?.name}
                           placeholder="John"
                           type="text"
                           onChange={(e) => setCurrent({ ...current, NextOfKin: { ...current.NextOfKin, name: e.target.value } })}
                         />
                       </FormGroup>
                     </Col>
-                    <Col className="px-1" md="4">
+                    <Col className="px-1" md="3">
                       <FormGroup>
                         <label>Phone</label>
                         <Input
+                          defaultValue={current?.NextOfKin?.phone}
                           placeholder="090..."
                           type="text"
                           onChange={(e) => setCurrent({ ...current, NextOfKin: { ...current.NextOfKin, phone: e.target.value } })}
                         />
                       </FormGroup>
                     </Col>
-                    <Col className="pl-1" md="4">
+                    <Col className="px-1" md="3">
                       <FormGroup>
                         <label>Address</label>
                         <Input
+                          defaultValue={current?.NextOfKin?.address}
                           placeholder="98 Ahmadu Zubairu Way"
                           type="text"
                           onChange={(e) => setCurrent({ ...current, NextOfKin: { ...current.NextOfKin, address: e.target.value } })}
                         />
                       </FormGroup>
                     </Col>
+                    <Col className="pl-1" md="3">
+                      <FormGroup>
+                        <label>Relationship</label>
+                        <Input
+                          placeholder="Relationship"
+                          type="select"
+                          onChange={(e) => setCurrent({ ...current, NextOfKin: { ...current.NextOfKin, relationship: e.target.value } })}
+                        >
+                          <option disabled selected>Select Relative...</option>
+                          {["Father", "Mother", "Brother", "Sister", "Cousin", "Relative", "Friend"].map((stat, key) => {
+                            return (
+                              <option key={key}>{stat}</option>
+                            )
+                          })}
+
+
+                        </Input>
+                      </FormGroup>
+                    </Col>
                   </Row>
                   <hr></hr>
                   <h6> Emergency Contact</h6>
                   <Row>
-                    <Col className="pr-1" md="4">
+                    <Col className="pr-1" md="3">
                       <FormGroup>
                         <label>Name</label>
                         <Input
+                          defaultValue={current?.EmergencyContact?.name}
                           placeholder="John Doe"
                           type="text"
                           onChange={(e) => setCurrent({ ...current, EmergencyContact: { ...current.EmergencyContact, name: e.target.value } })}
                         />
                       </FormGroup>
                     </Col>
-                    <Col className="px-1" md="4">
+                    <Col className="px-1" md="3">
                       <FormGroup>
                         <label>Phone</label>
                         <Input
+                          defaultValue={current?.EmergencyContact?.phone}
                           placeholder="090....."
                           type="text"
                           onChange={(e) => setCurrent({ ...current, EmergencyContact: { ...current.EmergencyContact, phone: e.target.value } })}
                         />
                       </FormGroup>
                     </Col>
-                    <Col className="pl-1" md="4">
+                    <Col className="px-1" md="3">
                       <FormGroup>
                         <label>Address</label>
                         <Input
+                          defaultValue={current?.EmergencyContact?.address}
                           placeholder="98 Ahmadu Zubairu Way"
                           type="text"
                           onChange={(e) => setCurrent({ ...current, EmergencyContact: { ...current.EmergencyContact, address: e.target.value } })}
                         />
+                      </FormGroup>
+                    </Col>
+                    <Col className="pl-1" md="3">
+                      <FormGroup>
+                        <label>Relationship</label>
+                        <Input
+                          placeholder="Staff Type"
+                          type="select"
+                          onChange={(e) => setCurrent({ ...current, EmergencyContact: { ...current.EmergencyContact, relationship: e.target.value } })}
+                        >
+                          <option disabled selected>Select Relative...</option>
+                          {["Father", "Mother", "Brother", "Sister", "Cousin", "Relative"].map((stat, key) => {
+                            return (
+                              <option key={key}>{stat}</option>
+                            )
+                          })}
+
+
+                        </Input>
                       </FormGroup>
                     </Col>
                   </Row>
@@ -471,74 +515,106 @@ function Clients() {
                       <hr></hr>
                       <h6> Next of Kin</h6>
                       <Row>
-                        <Col className="pr-1" md="4">
+                        <Col className="pr-1" md="3">
                           <FormGroup>
                             <label>Name</label>
                             <Input
-                              defaultValue={current?.NextOfKin?.name}
                               placeholder="John"
                               type="text"
                               onChange={(e) => setCurrent({ ...current, NextOfKin: { ...current.NextOfKin, name: e.target.value } })}
                             />
                           </FormGroup>
                         </Col>
-                        <Col className="px-1" md="4">
+                        <Col className="px-1" md="3">
                           <FormGroup>
                             <label>Phone</label>
                             <Input
-                              defaultValue={current?.NextOfKin?.phone}
                               placeholder="090..."
                               type="text"
                               onChange={(e) => setCurrent({ ...current, NextOfKin: { ...current.NextOfKin, phone: e.target.value } })}
                             />
                           </FormGroup>
                         </Col>
-                        <Col className="pl-1" md="4">
+                        <Col className="px-1" md="3">
                           <FormGroup>
                             <label>Address</label>
                             <Input
-                              defaultValue={current?.NextOfKin?.address}
                               placeholder="98 Ahmadu Zubairu Way"
                               type="text"
                               onChange={(e) => setCurrent({ ...current, NextOfKin: { ...current.NextOfKin, address: e.target.value } })}
                             />
                           </FormGroup>
                         </Col>
+                        <Col md="3" className="pl-1">
+                          <FormGroup>
+                            <label>Relationship</label>
+                            <Input
+                              placeholder="Relationship"
+                              type="select"
+                              onChange={(e) => setCurrent({ ...current, NextOfKin: { ...current.NextOfKin, relationship: e.target.value } })}
+                            >
+                              <option>{current?.NextOfKin?.relationship || "Select Relationship..."}</option>
+                              {["Father", "Mother", "Brother", "Sister", "Cousin", "Relative", "friend"].map((stat, key) => {
+                                return (
+                                  <>{current?.NextOfKin?.relationship !== stat ? <option>{stat}</option> : null}</>
+                                )
+                              })}
+
+
+                            </Input>
+                          </FormGroup>
+                        </Col>
                       </Row>
                       <hr></hr>
                       <h6> Emergency Contact</h6>
                       <Row>
-                        <Col className="pr-1" md="4">
+                        <Col className="pr-1" md="3">
                           <FormGroup>
                             <label>Name</label>
                             <Input
-                              defaultValue={current?.EmergencyContact?.name}
                               placeholder="John Doe"
                               type="text"
                               onChange={(e) => setCurrent({ ...current, EmergencyContact: { ...current.EmergencyContact, name: e.target.value } })}
                             />
                           </FormGroup>
                         </Col>
-                        <Col className="px-1" md="4">
+                        <Col className="px-1" md="3">
                           <FormGroup>
                             <label>Phone</label>
                             <Input
-                              defaultValue={current?.EmergencyContact?.phone}
                               placeholder="090....."
                               type="text"
                               onChange={(e) => setCurrent({ ...current, EmergencyContact: { ...current.EmergencyContact, phone: e.target.value } })}
                             />
                           </FormGroup>
                         </Col>
-                        <Col className="pl-1" md="4">
+                        <Col className="px-1" md="3">
                           <FormGroup>
                             <label>Address</label>
                             <Input
-                              defaultValue={current?.EmergencyContact?.address}
                               placeholder="98 Ahmadu Zubairu Way"
                               type="text"
                               onChange={(e) => setCurrent({ ...current, EmergencyContact: { ...current.EmergencyContact, address: e.target.value } })}
                             />
+                          </FormGroup>
+                        </Col>
+                        <Col md="3" className="pl-1">
+                          <FormGroup>
+                            <label>Relationship</label>
+                            <Input
+                              placeholder="Relationship"
+                              type="select"
+                              onChange={(e) => setCurrent({ ...current, EmergencyContact: { ...current.EmergencyContact, relationship: e.target.value } })}
+                            >
+                              <option>{current?.EmergencyContact?.relationship || "Select Relationship"}</option>
+                              {["Father", "Mother", "Brother", "Sister", "Cousin", "Relative", "Friend"].map((stat, key) => {
+                                return (
+                                  <>{current?.EmergencyContact?.relationship !== stat ? <option>{stat}</option> : null}</>
+                                )
+                              })}
+
+
+                            </Input>
                           </FormGroup>
                         </Col>
                       </Row>

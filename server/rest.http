@@ -24,14 +24,16 @@ POST http://care-ecms.herokuapp.com/api/user/add_user
 Content-Type: application/json
 
 {
-    "email":"hapsahanis.hh@gmail.com",  
-    "name":"Hanis Hapsa",
-    "last_name":"Hapsa",
-    "dob":"2022/10/03",
+    "email":"admin@gmail.com",  
+    "first_name":"Abdulhamid",
+    "last_name":"Tukur",
+    "dob":"1999/10/03",
     "role":"admin",
     "phone":  "09094252810",
     "status":"active",
-    "password":"hanis"
+    "password":"admin",
+    "address":"No 98 Ahamdu Zubairu Way."
+
 }
 
 
