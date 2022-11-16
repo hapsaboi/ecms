@@ -19,6 +19,7 @@ const port = process.env.PORT || process.env.LocalPort;
 //@response - status: true or false | error
 router.patch('/update_user/:id', auth, async (req, res) => {
 	const { id } = req.params;
+	console.log(req.body)
 	try {
 		let data = req.body;
 		if (data.password) {
@@ -27,7 +28,7 @@ router.patch('/update_user/:id', auth, async (req, res) => {
 		}
 
 		const user = await Users.findByIdAndUpdate(id, req.body);
-
+		console.log(user)
 		if (!user) { res.status(400).send({ status: false, error: 'Problem with the update query' }) };
 
 		//add change to system

@@ -519,6 +519,7 @@ function Clients() {
                           <FormGroup>
                             <label>Name</label>
                             <Input
+                              defaultValue={current?.NextOfKin?.name}
                               placeholder="John"
                               type="text"
                               onChange={(e) => setCurrent({ ...current, NextOfKin: { ...current.NextOfKin, name: e.target.value } })}
@@ -529,6 +530,7 @@ function Clients() {
                           <FormGroup>
                             <label>Phone</label>
                             <Input
+                              defaultValue={current?.NextOfKin?.phone}
                               placeholder="090..."
                               type="text"
                               onChange={(e) => setCurrent({ ...current, NextOfKin: { ...current.NextOfKin, phone: e.target.value } })}
@@ -539,6 +541,7 @@ function Clients() {
                           <FormGroup>
                             <label>Address</label>
                             <Input
+                              defaultValue={current?.NextOfKin?.address}
                               placeholder="98 Ahmadu Zubairu Way"
                               type="text"
                               onChange={(e) => setCurrent({ ...current, NextOfKin: { ...current.NextOfKin, address: e.target.value } })}
@@ -572,6 +575,7 @@ function Clients() {
                           <FormGroup>
                             <label>Name</label>
                             <Input
+                              defaultValue={current?.EmergencyContact?.name}
                               placeholder="John Doe"
                               type="text"
                               onChange={(e) => setCurrent({ ...current, EmergencyContact: { ...current.EmergencyContact, name: e.target.value } })}
@@ -582,6 +586,7 @@ function Clients() {
                           <FormGroup>
                             <label>Phone</label>
                             <Input
+                              defaultValue={current?.EmergencyContact?.phone}
                               placeholder="090....."
                               type="text"
                               onChange={(e) => setCurrent({ ...current, EmergencyContact: { ...current.EmergencyContact, phone: e.target.value } })}
@@ -592,6 +597,7 @@ function Clients() {
                           <FormGroup>
                             <label>Address</label>
                             <Input
+                              defaultValue={current?.EmergencyContact?.address}
                               placeholder="98 Ahmadu Zubairu Way"
                               type="text"
                               onChange={(e) => setCurrent({ ...current, EmergencyContact: { ...current.EmergencyContact, address: e.target.value } })}

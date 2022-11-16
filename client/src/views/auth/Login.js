@@ -55,7 +55,7 @@ function Login() {
 
                     <form className="llogin-form" onSubmit={loginFunc}>
                         <div className="lform-control" style={{}}>
-                            <input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+                            <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
                             <i className="fas fa-user"></i>
                         </div>
                         <div className="lform-control">

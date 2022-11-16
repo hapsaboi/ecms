@@ -127,7 +127,7 @@ function User() {
                   <hr></hr>
                   <h6> Next of Kin</h6>
                   <Row>
-                    <Col className="pr-1" md="4">
+                    <Col className="pr-1" md="3">
                       <FormGroup>
                         <label>Name</label>
                         <Input
@@ -138,7 +138,7 @@ function User() {
                         />
                       </FormGroup>
                     </Col>
-                    <Col className="px-1" md="4">
+                    <Col className="px-1" md="3">
                       <FormGroup>
                         <label>Phone</label>
                         <Input
@@ -149,7 +149,7 @@ function User() {
                         />
                       </FormGroup>
                     </Col>
-                    <Col className="pl-1" md="4">
+                    <Col className="px-1" md="3">
                       <FormGroup>
                         <label>Address</label>
                         <Input
@@ -160,11 +160,30 @@ function User() {
                         />
                       </FormGroup>
                     </Col>
+                    <Col md="3" className="pl-1">
+                      <FormGroup>
+                        <label>Relationship</label>
+                        <Input
+                          placeholder="Relationship"
+                          type="select"
+                          onChange={(e) => setProfile({ ...profile, NextOfKin: { ...profile.NextOfKin, relationship: e.target.value } })}
+                        >
+                          <option>{profile?.NextOfKin?.relationship || "Select Relationship..."}</option>
+                          {["Father", "Mother", "Brother", "Sister", "Cousin", "Relative", "friend"].map((stat, key) => {
+                            return (
+                              <>{profile?.NextOfKin?.relationship !== stat ? <option>{stat}</option> : null}</>
+                            )
+                          })}
+
+
+                        </Input>
+                      </FormGroup>
+                    </Col>
                   </Row>
                   <hr></hr>
                   <h6> Emergency Contact</h6>
                   <Row>
-                    <Col className="pr-1" md="4">
+                    <Col className="pr-1" md="3">
                       <FormGroup>
                         <label>Name</label>
                         <Input
@@ -175,7 +194,7 @@ function User() {
                         />
                       </FormGroup>
                     </Col>
-                    <Col className="px-1" md="4">
+                    <Col className="px-1" md="3">
                       <FormGroup>
                         <label>Phone</label>
                         <Input
@@ -186,7 +205,7 @@ function User() {
                         />
                       </FormGroup>
                     </Col>
-                    <Col className="pl-1" md="4">
+                    <Col className="px-1" md="3">
                       <FormGroup>
                         <label>Address</label>
                         <Input
@@ -195,6 +214,25 @@ function User() {
                           type="text"
                           onChange={(e) => setProfile({ ...profile, EmergencyContact: { ...profile.EmergencyContact, address: e.target.value } })}
                         />
+                      </FormGroup>
+                    </Col>
+                    <Col md="3" className="pl-1">
+                      <FormGroup>
+                        <label>Relationship</label>
+                        <Input
+                          placeholder="Relationship"
+                          type="select"
+                          onChange={(e) => setProfile({ ...profile, EmergencyContact: { ...profile.EmergencyContact, relationship: e.target.value } })}
+                        >
+                          <option>{profile?.EmergencyContact?.relationship || "Select Relationship"}</option>
+                          {["Father", "Mother", "Brother", "Sister", "Cousin", "Relative", "Friend"].map((stat, key) => {
+                            return (
+                              <>{profile?.EmergencyContact?.relationship !== stat ? <option>{stat}</option> : null}</>
+                            )
+                          })}
+
+
+                        </Input>
                       </FormGroup>
                     </Col>
                   </Row>
