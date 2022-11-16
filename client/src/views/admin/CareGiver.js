@@ -373,7 +373,7 @@ function CareGivers() {
                       <FormGroup>
                         <label>Relationship</label>
                         <Input
-                          placeholder="Staff Type"
+                          placeholder="Relationship"
                           type="select"
                           onChange={(e) => setCurrent({ ...current, EmergencyContact: { ...current.EmergencyContact, relationship: e.target.value } })}
                         >
