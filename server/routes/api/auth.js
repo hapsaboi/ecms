@@ -4,7 +4,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 dotenv.config();
-const crypto = require('crypto');
 // Users Model
 const User = require('../../models/User');
 // getting the auth middleware
@@ -19,7 +18,7 @@ const port = process.env.PORT || process.env.LocalPort;
 //@desc Authenticate user
 //@access Public
 router.post('/', async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password } = req.body; // object destucturing
 
     //Simple Validation
     if (!email || !password) {
@@ -31,7 +30,7 @@ router.post('/', async (req, res) => {
         if (!user) return res.status(401).send({ msg: 'User Does Not Exist', auth: false });
 
         //Validating Password
-        bcrypt.compare(password, user.password)
+        bcrypt.compare(password, user.password) //comparing passwords
             .then(isMatch => {
                 if (!isMatch) {
                     return res.status(401).send({ msg: 'Invalid Credentails', auth: false })

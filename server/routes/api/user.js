@@ -19,7 +19,7 @@ const port = process.env.PORT || process.env.LocalPort;
 //@response - status: true or false | error
 router.patch('/update_user/:id', auth, async (req, res) => {
 	const { id } = req.params;
-	console.log(req.body)
+
 	try {
 		let data = req.body;
 		if (data.password) {
@@ -62,7 +62,7 @@ router.post('/add_user', async (req, res) => {
 		newUser.password = await bcrypt.hash(req.body.password || "", salt);
 
 		try {
-			newUser.save();
+			newUser.save(); //save the data to db
 			return res
 				.status(200)
 				.send({ msg: 'Account created successfuly!', status: true, data: newUser });
