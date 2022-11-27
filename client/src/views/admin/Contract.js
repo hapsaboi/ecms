@@ -18,7 +18,7 @@ import {
   InputGroup, InputGroupAddon, InputGroupText, Input, Form, FormGroup, Button
 } from "reactstrap";
 
-function Contracts() {
+function Contracts({ isDashboard }) {
   const [contracts, setContracts] = useState([]);
   const [mode, setMode] = useState('all');
   const [current, setCurrent] = useState({ email: "" });
@@ -97,6 +97,8 @@ function Contracts() {
       await axios.patch(user.updateUser + "/" + userFound._id, newC).then((res) => {
         if (res.data.status) {
           setNotificationDetails({ msg: "Contract Added Successfully.", type: "success" });
+          setUserFound({});
+          e.target.reset();
         }
         else {
           setNotificationDetails({ msg: "Error Adding Contract.", type: "Danger" });
@@ -126,24 +128,26 @@ function Contracts() {
       <div className="content">
         {mode === "all" ?
           <>
-            <Row style={{ marginTop: "-30px" }}>
-              <Col style={{ padding: "20px" }}><h5>Total: {pagination.count || 0}</h5></Col>
-              <Col style={{ paddingTop: "22px" }}>
-                <InputGroup style={{ borderColor: "#ccc" }}>
-                  <Input placeholder="Search..." onChange={(e) => { setSearch(e.target.value) }} />
-                  <InputGroupAddon addonType="append">
-                    <InputGroupText>
-                      <i className="nc-icon nc-zoom-split" />
-                    </InputGroupText>
-                  </InputGroupAddon>
-                </InputGroup>
-              </Col>
-              <Col md={3}>
-                <button onClick={() => { setMode("add"); setCurrent({}) }} className="btn" style={{ width: "100%", marginTop: "20px", marginBottom: "20px" }}>
-                  <BsPlusSquareFill size={20} style={{ marginRight: "10px" }} />   Add Contract
-                </button>
-              </Col>
-            </Row>
+            {!isDashboard ?
+              < Row style={{ marginTop: "-30px" }} >
+                <Col style={{ padding: "20px" }}><h5>Total: {pagination.count || 0}</h5></Col>
+                <Col style={{ paddingTop: "22px" }}>
+                  <InputGroup style={{ borderColor: "#ccc" }}>
+                    <Input placeholder="Search..." onChange={(e) => { setSearch(e.target.value) }} />
+                    <InputGroupAddon addonType="append">
+                      <InputGroupText>
+                        <i className="nc-icon nc-zoom-split" />
+                      </InputGroupText>
+                    </InputGroupAddon>
+                  </InputGroup>
+                </Col>
+                <Col md={3}>
+                  <button onClick={() => { setMode("add"); setCurrent({}) }} className="btn" style={{ width: "100%", marginTop: "20px", marginBottom: "20px" }}>
+                    <BsPlusSquareFill size={20} style={{ marginRight: "10px" }} />   Add Contract
+                  </button>
+                </Col>
+              </Row> :
+              null}
             <Card>
               <CardBody>
 
@@ -152,9 +156,9 @@ function Contracts() {
                     <tr>
                       <th>Name</th>
                       <th>Email</th>
-                      <th>Contracts</th>
+                      {!isDashboard ? <th>Contracts</th> : null}
                       <th>Status</th>
-                      <th>Action</th>
+                      {!isDashboard ? <th>Action</th> : null}
                     </tr>
                   </thead>
                   <tbody>
@@ -163,13 +167,18 @@ function Contracts() {
                         <tr key={key}>
                           <td>{items.first_name + " " + items.last_name}</td>
                           <td>{items.email}</td>
-                          <td>{items.Contracts.length || 0}</td>
+                          {!isDashboard ? <td>{items.Contracts.length || 0}</td> : null}
+
                           <td>{checkDates(items?.Contracts[0]?.start_date, items?.Contracts[0]?.end_date) ? <div style={{ background: "rgb(46, 212, 122)", color: "white", borderRadius: "10px", textAlign: "center" }}>Valid</div> : <div style={{ background: "red", color: "white", borderRadius: "10px", textAlign: 'center' }}>Expired</div>}</td>
-                          <td>
-                            <button onClick={() => { setMode("view"); setCurrent(items) }} className="btn" style={{ margin: "0px", padding: "5px" }}>
-                              <BsEye size={20} /> View
-                            </button>
-                          </td>
+                          {!isDashboard ?
+                            <td>
+                              <button onClick={() => { setMode("view"); setCurrent(items) }} className="btn" style={{ margin: "0px", padding: "5px" }}>
+                                <BsEye size={20} /> View
+                              </button>
+                            </td>
+                            : null
+                          }
+
                         </tr>
                       )
                     })}
@@ -196,14 +205,12 @@ function Contracts() {
                 </Row>
               </CardHeader>
               <CardBody>
-                <Form>
+                <Form onSubmit={(e) => { addContract(e) }}>
                   <Row>
                     <Col className="pr-1" md="6">
                       <FormGroup>
                         <label>Email</label>
                         <Input
-                          value={current.email}
-                          defaultValue={current.email}
                           placeholder="abdul@gmail.com"
                           type="text"
                           onChange={(e) => setCurrent({ ...current, email: e.target.value })}
@@ -267,7 +274,6 @@ function Contracts() {
                         className="btn-round"
                         color="primary"
                         type="submit"
-                        onClick={addContract}
                         disabled={Object.keys(userFound).length > 0 ? false : true}
                       >
                         Add Contract

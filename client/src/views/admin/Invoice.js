@@ -80,6 +80,8 @@ function Invoices() {
         setNotificationDetails({ msg: "Invoice Added Successfully.", type: "success" });
         setInvoices([...invoices, res.data.data]);
         setPagination({ ...pagination, count: pagination.count + 1 });
+        setCurrent({});
+        e.target.reset();
       }
       else {
         setNotificationDetails({ msg: "Error Adding Invoice, ensure all fields are filled.", type: "danger" });
@@ -194,7 +196,7 @@ function Invoices() {
                 </Row>
               </CardHeader>
               <CardBody>
-                <Form>
+                <Form onSubmit={(e) => { addInvoice(e) }}>
                   <Row>
                     <Col className="pr-1" md="6">
                       <FormGroup>
@@ -257,7 +259,6 @@ function Invoices() {
                         className="btn-round"
                         color="primary"
                         type="submit"
-                        onClick={addInvoice}
                         disabled={Object.keys(userFound).length > 0 ? false : true}
                       >
                         Send Invoice

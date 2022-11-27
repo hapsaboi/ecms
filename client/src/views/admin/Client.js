@@ -60,6 +60,7 @@ function Clients() {
         setClients([...clients, res.data.data]);
         setPagination({ ...pagination, count: pagination.count + 1 })
         setCurrent({});
+        e.target.reset();
       }
       else {
         setNotificationDetails({ msg: "Error adding client, ensure all fields are present.", type: "danger" });
@@ -183,7 +184,7 @@ function Clients() {
                 </Row>
               </CardHeader>
               <CardBody>
-                <Form>
+                <Form onSubmit={(e) => addClient(e)}>
                   <Row>
                     <Col className="pr-1" md="6">
                       <FormGroup>
@@ -389,7 +390,6 @@ function Clients() {
                         className="btn-round"
                         color="primary"
                         type="submit"
-                        onClick={addClient}
                       >
                         Add Client
                       </Button>

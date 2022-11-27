@@ -42,7 +42,7 @@ const CompanyInfo = tw.div``
 const Divider = tw.div`my-8 border-b-2 border-gray-800`
 export default () => {
   return (
-    <Container>
+    <Container id="contact" >
       <Content>
         <FiveColumns>
           <CompanyColumn>
@@ -69,16 +69,16 @@ export default () => {
             <ColumnHeading>Quick Links</ColumnHeading>
             <LinkList>
               <LinkListItem>
-                <Link href="#">Home</Link>
+                <Link href="#home">Home</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">About</Link>
+                <Link href="#about">About</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Services</Link>
+                <Link href="#services">Services</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Contact</Link>
+                <Link href="#contact">Contact</Link>
               </LinkListItem>
             </LinkList>
           </Column>

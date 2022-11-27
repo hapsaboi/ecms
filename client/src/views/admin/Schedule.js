@@ -26,7 +26,7 @@ function Schedules() {
   const [pagination, setPagination] = useState({ current: 1 });
   const [search, setSearch] = useState('');
   const [date, setDate] = useState({});
-  const days = ["Monday", "Tuesday", "Wednesday", "Thursay", "Saturday", "Sunday"];
+  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
   useEffect(
     () => {
@@ -83,7 +83,7 @@ function Schedules() {
         setNotificationDetails({ msg: "Schedule Generated Successfully.", type: "success" });
         if (Object.keys(res.data.data).length) {
           setSchedules([res.data.data, ...schedules]);
-          setPagination({ ...pagination, count: pagination.count + 1 })
+          setPagination({ ...pagination, count: pagination.count + 1 });
         }
 
       }
@@ -258,7 +258,7 @@ function Schedules() {
                                   {items.map((stf, index) => {
                                     return (
                                       <span key={index}>
-                                        {stf.name} : {stf.email},
+                                        {stf.name},<br />
                                       </span>
                                     )
                                   })}

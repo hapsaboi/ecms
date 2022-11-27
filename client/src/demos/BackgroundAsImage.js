@@ -48,16 +48,16 @@ const PrimaryAction = tw.button`px-8 py-3 mt-10 text-sm sm:text-base sm:mt-16 sm
 export default () => {
   const navLinks = [
     <NavLinks key={1}>
-      <NavLink style={{ color: "green", fontWeight: "700" }} href="#home">
+      <NavLink style={{ color: "green", fontWeight: "700", textDecoration: "none" }} href="#home">
         Home
       </NavLink>
-      <NavLink href="#" style={{ color: "green", fontWeight: "700" }}>
+      <NavLink href="#about" style={{ color: "green", fontWeight: "700", textDecoration: "none" }}>
         About
       </NavLink>
-      <NavLink href="#services" style={{ color: "green", fontWeight: "700" }}>
+      <NavLink href="#services" style={{ color: "green", fontWeight: "700", textDecoration: "none" }}>
         Services
       </NavLink>
-      <NavLink href="#" style={{ color: "green", fontWeight: "700" }}>
+      <NavLink href="#contact" style={{ color: "green", fontWeight: "700", textDecoration: "none" }}>
         Contact
       </NavLink>
     </NavLinks>,
@@ -69,7 +69,7 @@ export default () => {
   ];
 
   return (
-    <Container>
+    <Container id="home">
       <OpacityOverlay />
       <HeroContainer>
         <StyledHeader links={navLinks} />
@@ -80,7 +80,7 @@ export default () => {
               <br />
               <SlantedBackground>With Comfort.</SlantedBackground>
             </Heading>
-            <PrimaryAction style={{ background: "rgb(37, 160, 92)" }}>Get Started</PrimaryAction>
+            <Link to={"/login"}><PrimaryAction style={{ background: "rgb(37, 160, 92)" }}>Get Started</PrimaryAction></Link>
           </LeftColumn>
           <RightColumn>
 

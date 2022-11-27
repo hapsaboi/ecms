@@ -16,7 +16,7 @@ function Schedules() {
   const [notificationStatus, setNotificationStatus] = useState(false)
   const [notificationDetails, setNotificationDetails] = useState({ msg: "", type: "" });
   const [current, setCurrent] = useState({});
-  const days = ["Monday", "Tuesday", "Wednesday", "Thursay", "Saturday", "Sunday"];
+  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
   useEffect(
     () => {
@@ -55,7 +55,8 @@ function Schedules() {
     const end = new Date(end1);
     let result = null;
 
-    if (date > start && date < end) {
+    console.log(start.toLocaleDateString(), end.toLocaleDateString(), date.toLocaleDateString());
+    if ((date > start && date < end) || (date.toLocaleDateString().substring(0, 10) === start.toLocaleDateString().substring(0, 10) || date.toLocaleDateString().substring(0, 10) === end.toLocaleDateString().substring(0, 10))) {
       result = true;
     } else {
       result = false;
@@ -90,8 +91,9 @@ function Schedules() {
                                 {items.map((stf, index) => {
                                   return (
                                     <span key={index}>
-                                      {stf.name} : {stf.email},
+                                      {stf.name},
                                     </span>
+
                                   )
                                 })}
                               </>

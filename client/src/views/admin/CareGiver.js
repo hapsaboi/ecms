@@ -58,6 +58,8 @@ function CareGivers() {
       if (res.data.status) {
         setNotificationDetails({ msg: "Care Giver Added Successfully.", type: "success" });
         setCareGivers([...caregivers, res.data.data]);
+        setCurrent({});
+        e.target.reset();
         setPagination({ ...pagination, count: pagination.count + 1 });
       }
       else {
@@ -184,13 +186,14 @@ function CareGivers() {
                 </Row>
               </CardHeader>
               <CardBody>
-                <Form>
+                <Form onSubmit={(e) => addCareGiver(e)}>
                   <Row>
                     <Col className="pr-1" md="6">
                       <FormGroup>
                         <label>First Name</label>
                         <Input
                           defaultValue={current.first_name}
+                          value={current.first_name}
                           placeholder="John"
                           type="text"
                           onChange={(e) => setCurrent({ ...current, first_name: e.target.value })}
@@ -408,7 +411,6 @@ function CareGivers() {
                         className="btn-round"
                         color="primary"
                         type="submit"
-                        onClick={addCareGiver}
                       >
                         Add Care Giver
                       </Button>

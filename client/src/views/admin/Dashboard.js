@@ -4,6 +4,7 @@ import { MdOutlineEvent } from "react-icons/md";
 import { FaFileContract, FaUserCircle } from "react-icons/fa";
 import axios from "axios";
 import { user } from "data/api";
+import Schedules from "../caregiver/Schedule";
 // reactstrap components
 import {
   Card,
@@ -12,6 +13,7 @@ import {
   Row,
   Col
 } from "reactstrap";
+import Contracts from "./Contract";
 // core components
 
 
@@ -97,6 +99,17 @@ function Dashboard() {
               </CardBody>
 
             </Card>
+          </Col>
+        </Row>
+        <Row>
+
+          <Col md={6}>
+            <h5>Contracts</h5>
+            <Contracts isDashboard={true} />
+          </Col>
+          <Col md={6}>
+            <h5>Schedule</h5>
+            <Schedules />
           </Col>
         </Row>
 

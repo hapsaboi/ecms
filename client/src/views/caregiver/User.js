@@ -6,14 +6,12 @@ import axios from 'axios';
 import { FaUserCircle } from "react-icons/fa";
 // reactstrap components
 import {
-  Button,
   Card,
   CardHeader,
   CardBody,
   CardTitle,
   FormGroup,
   Form,
-  Input,
   Row,
   Col,
 } from "reactstrap";
@@ -62,7 +60,7 @@ function User() {
           <Col md="8">
             <Card className="card-user">
               <CardHeader>
-                <CardTitle tag="h5">Edit Profile</CardTitle>
+                <CardTitle tag="h5">User Profile</CardTitle>
               </CardHeader>
               <CardBody>
                 <Form>
@@ -70,12 +68,7 @@ function User() {
                     <Col className="pr-1" md="6">
                       <FormGroup>
                         <label>Email</label>
-                        <Input
-                          defaultValue={profile.email}
-                          onChange={(e) => setProfile({ ...profile, email: e.target.value })}
-                          placeholder="Username"
-                          type="text"
-                        />
+                        <br />{profile.email}
                       </FormGroup>
                     </Col>
                     <Col className="pl-1" md="6">
@@ -83,31 +76,21 @@ function User() {
                         <label htmlFor="exampleInputEmail1">
                           Phone
                         </label>
-                        <Input placeholder="Phone" type="text" defaultValue={profile.phone} onChange={(e) => setProfile({ ...profile, phone: e.target.value })} />
+                        <br />{profile.phone}
                       </FormGroup>
                     </Col>
                   </Row>
                   <Row>
                     <Col className="pr-1" md="6">
                       <FormGroup>
-                        <label>First Name</label>
-                        <Input
-                          defaultValue={profile.first_name}
-                          placeholder="John"
-                          type="text"
-                          onChange={(e) => setProfile({ ...profile, first_name: e.target.value })}
-                        />
+                        <label>First Name</label><br />
+                        {profile.first_name}
                       </FormGroup>
                     </Col>
                     <Col className="pl-1" md="6">
                       <FormGroup>
                         <label>Last Name</label>
-                        <Input
-                          defaultValue={profile.last_name}
-                          placeholder="John Doe"
-                          type="text"
-                          onChange={(e) => setProfile({ ...profile, last_name: e.target.value })}
-                        />
+                        <br />{profile.last_name}
                       </FormGroup>
                     </Col>
                   </Row>
@@ -115,12 +98,7 @@ function User() {
                     <Col md="12">
                       <FormGroup>
                         <label>Address</label>
-                        <Input
-                          defaultValue={profile.address}
-                          placeholder="Home Address"
-                          type="text"
-                          onChange={(e) => setProfile({ ...profile, address: e.target.value })}
-                        />
+                        <br />{profile.address}
                       </FormGroup>
                     </Col>
                   </Row>
@@ -130,53 +108,25 @@ function User() {
                     <Col className="pr-1" md="3">
                       <FormGroup>
                         <label>Name</label>
-                        <Input
-                          defaultValue={profile?.NextOfKin?.name}
-                          placeholder="John"
-                          type="text"
-                          onChange={(e) => setProfile({ ...profile, NextOfKin: { ...profile.NextOfKin, name: e.target.value } })}
-                        />
+                        <br />{profile?.NextOfKin?.name}
                       </FormGroup>
                     </Col>
                     <Col className="px-1" md="3">
                       <FormGroup>
                         <label>Phone</label>
-                        <Input
-                          defaultValue={profile?.NextOfKin?.phone}
-                          placeholder="090..."
-                          type="text"
-                          onChange={(e) => setProfile({ ...profile, NextOfKin: { ...profile.NextOfKin, phone: e.target.value } })}
-                        />
+                        <br />{profile?.NextOfKin?.phone}
                       </FormGroup>
                     </Col>
                     <Col className="px-1" md="3">
                       <FormGroup>
                         <label>Address</label>
-                        <Input
-                          defaultValue={profile?.NextOfKin?.address}
-                          placeholder="98 Ahmadu Zubairu Way"
-                          type="text"
-                          onChange={(e) => setProfile({ ...profile, NextOfKin: { ...profile.NextOfKin, address: e.target.value } })}
-                        />
+                        <br />{profile?.NextOfKin?.address}
                       </FormGroup>
                     </Col>
                     <Col md="3" className="pl-1">
                       <FormGroup>
                         <label>Relationship</label>
-                        <Input
-                          placeholder="Relationship"
-                          type="select"
-                          onChange={(e) => setProfile({ ...profile, NextOfKin: { ...profile.NextOfKin, relationship: e.target.value } })}
-                        >
-                          <option>{profile?.NextOfKin?.relationship || "Select Relationship..."}</option>
-                          {["Father", "Mother", "Brother", "Sister", "Cousin", "Relative", "friend"].map((stat, key) => {
-                            return (
-                              <>{profile?.NextOfKin?.relationship !== stat ? <option>{stat}</option> : null}</>
-                            )
-                          })}
-
-
-                        </Input>
+                        <br />{profile?.NextOfKin?.relationship}
                       </FormGroup>
                     </Col>
                   </Row>
@@ -186,68 +136,29 @@ function User() {
                     <Col className="pr-1" md="3">
                       <FormGroup>
                         <label>Name</label>
-                        <Input
-                          defaultValue={profile?.EmergencyContact?.name}
-                          placeholder="John Doe"
-                          type="text"
-                          onChange={(e) => setProfile({ ...profile, EmergencyContact: { ...profile.EmergencyContact, name: e.target.value } })}
-                        />
+                        <br />{profile?.EmergencyContact?.name}
                       </FormGroup>
                     </Col>
                     <Col className="px-1" md="3">
                       <FormGroup>
                         <label>Phone</label>
-                        <Input
-                          defaultValue={profile?.EmergencyContact?.phone}
-                          placeholder="090....."
-                          type="text"
-                          onChange={(e) => setProfile({ ...profile, EmergencyContact: { ...profile.EmergencyContact, phone: e.target.value } })}
-                        />
+                        <br />{profile?.EmergencyContact?.phone}
                       </FormGroup>
                     </Col>
                     <Col className="px-1" md="3">
                       <FormGroup>
                         <label>Address</label>
-                        <Input
-                          defaultValue={profile?.EmergencyContact?.address}
-                          placeholder="98 Ahmadu Zubairu Way"
-                          type="text"
-                          onChange={(e) => setProfile({ ...profile, EmergencyContact: { ...profile.EmergencyContact, address: e.target.value } })}
-                        />
+                        <br />{profile?.EmergencyContact?.address}
                       </FormGroup>
                     </Col>
                     <Col md="3" className="pl-1">
                       <FormGroup>
                         <label>Relationship</label>
-                        <Input
-                          placeholder="Relationship"
-                          type="select"
-                          onChange={(e) => setProfile({ ...profile, EmergencyContact: { ...profile.EmergencyContact, relationship: e.target.value } })}
-                        >
-                          <option>{profile?.EmergencyContact?.relationship || "Select Relationship"}</option>
-                          {["Father", "Mother", "Brother", "Sister", "Cousin", "Relative", "Friend"].map((stat, key) => {
-                            return (
-                              <>{profile?.EmergencyContact?.relationship !== stat ? <option>{stat}</option> : null}</>
-                            )
-                          })}
-
-
-                        </Input>
+                        <br />{profile?.EmergencyContact?.relationship}
                       </FormGroup>
                     </Col>
                   </Row>
-                  <Row>
-                    <div className="update ml-auto mr-auto">
-                      <Button
-                        className="btn-round"
-                        color="primary"
-                        type="submit"
-                        onClick={(e) => editProfile(e)}
-                      >
-                        Update Profile
-                      </Button>
-                    </div>
-                  </Row>
+
                 </Form>
               </CardBody>
             </Card>

@@ -53,7 +53,7 @@ export default ({
 }) => {
 
   return (
-    <Container id="whyus">
+    <Container id="about">
       <TwoColumn css={!imageInsideDiv && tw`md:items-center`}>
         <ImageColumn css={imageContainerCss}>
           <img src={event3} css={imageCss} alt="" />

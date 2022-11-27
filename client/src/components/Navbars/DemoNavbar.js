@@ -1,7 +1,9 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from '../../contexts/AuthContext';
 import { FaUserCircle } from 'react-icons/fa';
+import { AiFillCloseCircle } from "react-icons/ai";
+import Modal from 'react-modal';
 
 import logo from "../../assets/img/logo.png";
 import {
@@ -13,11 +15,24 @@ import {
   NavItem,
   Container,
   Col,
-  Row,
+  Row, Button
 } from "reactstrap";
 
 
 function Header({ props, routes }) {
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+  };
+  const [modalIsOpen, setIsModalOpen] = useState(false);
+
+
   const [isOpen, setIsOpen] = React.useState(false);
   const [color, setColor] = React.useState("transparent");
   const sidebarToggle = React.useRef();
@@ -132,20 +147,47 @@ function Header({ props, routes }) {
 
             <NavItem>
               <Row >
-                <Col style={{ margin: "10px" }}><FaUserCircle size={25} /></Col>
+                <Col style={{ margin: "10px" }}><Link to="user-page"><FaUserCircle size={25} /></Link></Col>
                 <Col style={{ marginLeft: "0px" }}> <span className="nav-link btn-rotate" style={{ cursor: "pointer", fontSize: "13px" }}>{userDetail.first_name || ""}</span></Col>
               </Row>
 
 
             </NavItem>
             <NavItem>
-              <span style={{ cursor: "pointer" }} className="nav-link btn-rotate" onClick={() => logout()}>
+              <span style={{ cursor: "pointer" }} className="nav-link btn-rotate" onClick={() => setIsModalOpen(true)}>
                 Logout
               </span>
             </NavItem>
           </Nav>
         </Collapse>
       </Container>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setIsModalOpen(false)}
+        style={customStyles}
+        contentLabel="Logout Modal"
+      >
+        <button onClick={() => setIsModalOpen(false)}>Close <AiFillCloseCircle color="red" /></button>
+        <div style={{ padding: "20px" }}>
+          <Button
+            className="btn-round"
+            color="primary"
+            type="submit"
+            onClick={() => setIsModalOpen(false)}
+          >
+            Stay Signed In
+          </Button>
+          <Button
+            onClick={() => logout()}
+            style={{ marginLeft: "15px" }}
+            className="btn-round"
+            color="danger"
+            type="submit"
+          >
+            Logout
+          </Button>
+        </div>
+      </Modal>
     </Navbar>
   );
 }
