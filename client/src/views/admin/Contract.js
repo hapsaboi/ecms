@@ -20,6 +20,7 @@ import {
 
 function Contracts({ isDashboard }) {
   const [contracts, setContracts] = useState([]);
+  const [cts, setCts] = useState({});
   const [mode, setMode] = useState('all');
   const [current, setCurrent] = useState({ email: "" });
   const [userFound, setUserFound] = useState({});
@@ -27,6 +28,7 @@ function Contracts({ isDashboard }) {
   const [search, setSearch] = useState('');
   const [notificationStatus, setNotificationStatus] = useState(false)
   const [notificationDetails, setNotificationDetails] = useState({ msg: "", type: "" });
+  const [selection,setSelection] = useState("all");
 
   const [newContract, setNewContract] = useState({});
   async function fetchUser() {
@@ -52,12 +54,28 @@ function Contracts({ isDashboard }) {
     });
   }
 
+  function changeCts(type){
+    if(type==="all"){
+      setContracts(cts.all)
+    }
+    if(type==="no"){
+      setContracts(cts.no)
+    }
+    if(type==="valid"){
+      setContracts(cts.valid)
+    }
+    if(type==="expired"){
+      setContracts(cts.expired)
+    }
+    
+  }
   useEffect(
     () => {
       async function fetchContracts() {
-        await axios.get(user.showAllUsers, { params: { ...pagination, search } }).then((response) => {
+        await axios.get(user.showAllContracts, { params: { ...pagination, search } }).then((response) => {
           if (response.data.status === true) {
             setContracts(response.data.data);
+            setCts({no:response.data.noContracts, expired:response.data.expired, valid:response.data.valid, all:response.data.data})
             if (pagination.current === 1) setPagination({ ...pagination, count: response.data.count });
           }
           else {
@@ -149,6 +167,30 @@ function Contracts({ isDashboard }) {
               </Row> :
               null}
             <Card>
+
+              <Row>
+                <Col>
+                  <button disabled={selection==="all"?true:false}  onClick={() => { changeCts("all"); setSelection("all") }} className="btn" style={{ margin: "0px", padding: "5px", width:"100%" }}>
+                    <BsEye size={20} /> All Contracts
+                  </button>
+                </Col>
+                <Col>
+                  <button disabled={selection==="no"?true:false}  onClick={() => { changeCts("no"); setSelection("no") }} className="btn" style={{ margin: "0px", padding: "5px", width:"100%" }}>
+                    <BsEye size={20} /> Users With No Contracts
+                  </button>
+                </Col>
+                <Col>
+                  <button disabled={selection==="valid"?true:false}  onClick={() => { changeCts("valid"); setSelection("valid") }} className="btn" style={{ margin: "0px", padding: "5px", width:"100%" }}>
+                    <BsEye size={20} />  Users With Valid Contracts
+                  </button>
+                </Col>
+                <Col>
+                  <button disabled={selection==="expired"?true:false}  onClick={() => { changeCts("expired"); setSelection("expired") }} className="btn" style={{ margin: "0px", padding: "5px", width:"100%" }}>
+                    <BsEye size={20} />  User With Expired Contracts
+                  </button>
+                </Col>
+              </Row><br />
+            
               <CardBody>
 
                 <Table responsive>
@@ -169,7 +211,7 @@ function Contracts({ isDashboard }) {
                           <td>{items.email}</td>
                           {!isDashboard ? <td>{items.Contracts.length || 0}</td> : null}
 
-                          <td>{checkDates(items?.Contracts[0]?.start_date, items?.Contracts[0]?.end_date) ? <div style={{ background: "rgb(46, 212, 122)", color: "white", borderRadius: "10px", textAlign: "center" }}>Valid</div> : <div style={{ background: "red", color: "white", borderRadius: "10px", textAlign: 'center' }}>Expired</div>}</td>
+                          <td>{checkDates(items?.Contracts[0]?.start_date, items?.Contracts[0]?.end_date) ? <div style={{ background: "rgb(46, 212, 122)", color: "white", borderRadius: "10px", textAlign: "center" }}>Valid</div> : <div style={{ background: "red", color: "white", borderRadius: "10px", textAlign: 'center' }}>Expire/None</div>}</td>
                           {!isDashboard ?
                             <td>
                               <button onClick={() => { setMode("view"); setCurrent(items) }} className="btn" style={{ margin: "0px", padding: "5px" }}>

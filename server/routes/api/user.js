@@ -117,6 +117,61 @@ router.get('/show_all_users', auth, async (req, res) => {
 	}
 });
 
+function checkDates(start1, end1) {
+    if (!start1 || !end1) {
+      return false;
+    }
+    const date = new Date();
+
+    const start = new Date(start1);
+    const end = new Date(end1);
+    let result = null;
+
+    if (date > start && date < end) {
+      result = true;
+    } else {
+      result = false;
+    }
+    return result;
+  }
+
+
+router.get('/show_all_contracts', auth, async (req, res) => {
+	const { current, search } = req.query;
+	try {
+		let noContracts=[];
+		let valid=[];
+		let expired=[];
+
+		let skip = 0;
+		let take = 100; //in the case current page is not specified
+		if (current) {
+			skip = (current - 1) * 10
+			take = 10;
+		}
+		// let caregiver = await CareGiver.find({ $or: [{ email: search }, { first_name: search }, { last_name: search }] }).skip(skip).limit(take);
+		let users = await Users.find().select('-password');
+
+		users.map((user)=>{
+			if(user.Contracts.length>0){
+				checkDates(user.Contracts[0].start_date, user.Contracts[0].end_date)?valid=[...valid,user]:expired=[...expired,user];
+			}else{
+				noContracts = [...noContracts, user];
+			}
+			user.Contracts.map((c)=>{
+
+			})
+		})
+		if (!users) { res.status(400).send({ status: false, error: 'Problem with the query or user not found' }) };
+		res.status(200).send({ status: true, data: users, count: users.length || 0 , noContracts, valid, expired});
+
+	} catch (err) {
+		res.status(400).json({ msg: err });
+	}
+});
+
+
+
 
 router.get('/show_user_by_email/:email', auth, async (req, res) => {
 	const { email } = req.params;

@@ -91,7 +91,6 @@ Content-Type: application/json
 {
   "ref_num": "ZIC2EFE2",
   "amount":3000,
-  "name":"Hanis Hapsa",
   "email":"hapsahanis.hh@gmail.com"
 }
 
@@ -104,4 +103,21 @@ Authorization: {{Token}}
 {
   "month": "11",
   "year":"2022"
+}
+
+
+### 
+POST http://localhost:5001/api/user/add_user/
+Content-Type: application/json
+Authorization: {{Token}}
+
+{
+  "first_name": "Hanis",
+  "last_name": "Hanis",
+  "email":"hanis@gmail.com",
+  "dob": "10/11/1980",
+  "role": "admin",
+  "address":"AUN",
+  "phone":"09066778876",
+  "password":"hanis"
 }

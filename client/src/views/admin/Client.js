@@ -223,7 +223,7 @@ function Clients() {
                     </Col>
                     <Col className="pl-1" md="6">
                       <FormGroup>
-                        <label htmlFor="exampleInputEmail1">
+                        <label htmlFor="exal1">
                           Phone
                         </label>
                         <Input
@@ -254,6 +254,77 @@ function Clients() {
                           placeholder="Home Address"
                           type="text"
                           onChange={(e) => setCurrent({ ...current, address: e.target.value })}
+                        />
+                      </FormGroup>
+                    </Col>
+
+                  </Row>
+                  <hr></hr>
+                  <h6> Medical</h6>
+
+                  <Row>
+                  <Col className="pr-1" md="3">
+                      <FormGroup>
+                        <label>Blood Group</label>
+                        <Input
+                          placeholder="Relationship"
+                          type="select"
+                          onChange={(e) => setCurrent({ ...current, Medical: { ...current.Medical, blood_group: e.target.value } })}
+                        >
+                          <option disabled selected>Select Relative...</option>
+                          {["A+", "A-", "B+", "B-", "AB+", "AB-", "O+","O-"].map((stat, key) => {
+                            return (
+                              <option key={key}>{stat}</option>
+                            )
+                          })}
+
+
+                        </Input>
+                      </FormGroup>
+                    </Col>
+                    <Col className="px-1" md="3">
+                      <FormGroup>
+                        <label>Genotype</label>
+                        <Input
+                          placeholder="Genotype"
+                          type="select"
+                          onChange={(e) => setCurrent({ ...current, Medical: { ...current.Medical, genotype: e.target.value } })}
+                        >
+                          <option disabled selected>Select Genotype...</option>
+                          {["AA", "AS", "AC", "SS","SC"].map((stat, key) => {
+                            return (
+                              <option key={key}>{stat}</option>
+                            )
+                          })}
+
+
+                        </Input>
+                      </FormGroup>
+                    </Col>
+
+                    <Col className="pl-1" md="6">
+                      <FormGroup>
+                        <label htmlFor="example">
+                          Allergies?
+                        </label>
+                        <Input
+                          placeholder="Allergies"
+                          type="text"
+                          defaultValue={current?.Medical?.allergy}
+                          onChange={(e) => setCurrent({ ...current, Medical: { ...current.Medical, allergy: e.target.value } })}
+                        />
+                      </FormGroup>
+                    </Col>
+                    <Col  md="12">
+                      <FormGroup>
+                        <label htmlFor="exampleInpu">
+                          Others
+                        </label>
+                        <Input
+                          placeholder="Other Info"
+                          type="text"
+                          defaultValue={current?.Medical?.others}
+                          onChange={(e) => setCurrent({ ...current, Medical: { ...current.Medical, others: e.target.value } })}
                         />
                       </FormGroup>
                     </Col>
@@ -512,6 +583,77 @@ function Clients() {
                           </FormGroup>
                         </Col>
                       </Row>
+
+                      <hr></hr>
+                  <h6> Medical</h6>
+
+                  <Row>
+                  <Col className="pr-1" md="3">
+                      <FormGroup>
+                        <label>Blood Group</label>
+                        <Input
+                          placeholder="Relationship"
+                          type="select"
+                          onChange={(e) => setCurrent({ ...current, Medical: { ...current.Medical, blood_group: e.target.value } })}
+                        >
+                          <option disabled selected>{current?.Medical?.blood_group||"Select Blood Group..."}</option>
+                          {["A+", "A-", "B+", "B-", "AB+", "AB-", "O+","O-"].map((stat, key) => {
+                            return (
+                              <option key={key}>{stat}</option>
+                            )
+                          })}
+
+
+                        </Input>
+                      </FormGroup>
+                    </Col>
+                    <Col className="px-1" md="3">
+                      <FormGroup>
+                        <label>Genotype</label>
+                        <Input
+                          placeholder="Genotype"
+                          type="select"
+                          onChange={(e) => setCurrent({ ...current, Medical: { ...current.Medical, genotype: e.target.value } })}
+                        >
+                          <option disabled selected>{current?.Medical?.genotype||"Select Genotype..."}</option>
+                          {["AA", "AS", "AC", "SS","SC"].map((stat, key) => {
+                            return (
+                              <option key={key}>{stat}</option>
+                            )
+                          })}
+
+
+                        </Input>
+                      </FormGroup>
+                    </Col>
+
+                    <Col className="pl-1" md="6">
+                      <FormGroup>
+                        <label htmlFor="exaple">
+                          Allergies?
+                        </label>
+                        <Input
+                          placeholder="Allergies"
+                          type="text"
+                          defaultValue={current?.Medical?.allergy}
+                          onChange={(e) => setCurrent({ ...current, Medical: { ...current.Medical, allergy: e.target.value } })}
+                        />
+                      </FormGroup>
+                    </Col>
+                    <Col  md="12">
+                      <FormGroup>
+                        <label htmlFor="exampleInpu">
+                          Others
+                        </label>
+                        <Input
+                          placeholder="Other Info"
+                          type="text"
+                          defaultValue={current?.Medical?.others}
+                          onChange={(e) => setCurrent({ ...current, Medical: { ...current.Medical, others: e.target.value } })}
+                        />
+                      </FormGroup>
+                    </Col>
+                  </Row>
                       <hr></hr>
                       <h6> Next of Kin</h6>
                       <Row>

@@ -1,4 +1,4 @@
-const BackEnd = process.env.REACT_APP_BackEndHost;
+const BackEnd = process.env.REACT_APP_BackEndHostLocal;
 export const caregiver = {
 	//take in a body with data
 	//data :  
@@ -46,6 +46,7 @@ export const user = {
 	updateUser: `${BackEnd}/api/user/update_user`,
 	getCounts: `${BackEnd}/api/user/get_counts`,
 	showUsers: `${BackEnd}/api/user/show_users`,
+	showAllContracts: `${BackEnd}/api/user/show_all_contracts`,
 	showAllUsers: `${BackEnd}/api/user/show_all_users`,
 	showUserByEmail: `${BackEnd}/api/user/show_user_by_email`
 };

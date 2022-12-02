@@ -68,7 +68,7 @@ router.post('/', async (req, res) => {
 //@access Private
 router.get('/user', auth, (req, res) => {
     User.findById(req.user.id)
-        .select('phone email address type date first_name last_name role')
+        .select('-password')
         .then(user => res.json(user))
 });
 

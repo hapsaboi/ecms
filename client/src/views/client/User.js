@@ -103,6 +103,35 @@ function User() {
                     </Col>
                   </Row>
                   <hr></hr>
+                  <h6> Medical</h6>
+                  <Row>
+                    <Col className="pr-1" md="3">
+                      <FormGroup>
+                        <label>Genotype</label>
+                        <br />{profile?.Medical?.genotype}
+                      </FormGroup>
+                    </Col>
+                    <Col className="px-1" md="3">
+                      <FormGroup>
+                        <label>Blood Group</label>
+                        <br />{profile?.Medical?.blood_group}
+                      </FormGroup>
+                    </Col>
+                    <Col className="pl-1" md="6">
+                      <FormGroup>
+                        <label>Allergies</label>
+                        <br />{profile?.Medical?.allergy}
+                      </FormGroup>
+                    </Col>
+                    <Col md="12" >
+                      <FormGroup>
+                        <label>Other Info</label>
+                        <br />{profile?.NextOfKin?.other}
+                      </FormGroup>
+                    </Col>
+                  </Row>
+                  <hr></hr>
+                  <hr></hr>
                   <h6> Next of Kin</h6>
                   <Row>
                     <Col className="pr-1" md="3">
